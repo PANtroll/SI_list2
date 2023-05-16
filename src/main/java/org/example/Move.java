@@ -1,34 +1,49 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Move {
 
-    private int x;
-    private int y;
+    private int row;
+    private int column;
 
     public Move(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.row = x;
+        this.column = y;
     }
 
-    public int getX() {
-        return x;
+    public int getRow() {
+        return row;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setRow(int row) {
+        this.row = row;
     }
 
-    public int getY() {
-        return y;
+    public int getColumn() {
+        return column;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Move move = (Move) o;
+        return row == move.row && column == move.column;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(row, column);
     }
 
     @Override
     public String toString() {
-        return "Move(" + (x + 1) +
-                " " + (y + 1) + ')';
+        return "Move(" + (row + 1) +
+                " " + (column + 1) + ')';
     }
 }
