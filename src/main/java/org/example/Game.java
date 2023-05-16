@@ -18,12 +18,19 @@ public class Game {
     }
 
     public void startGame(){
-        MinMax minMax = new MinMax(new CenterPions());
+        MinMax minMax = new MinMax(new CountPions());
         Node result = minMax.performMinMax(board, 0, 1);
         System.out.println(result);
         System.out.println("Visited nodes: " + MinMax.nodesCounter);
         System.out.println(result.getBestValue() > 0 ? "You Win! :)" : "You Lost :(");
-
+    }
+    public void startGameAlfaBeta(){
+        AlfaBeta alfaBeta = new AlfaBeta(new CountPions());
+        Node result = alfaBeta.performAlfaBeta(board, 0, 1, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        System.out.println(result);
+        System.out.println("Visited nodes: " + AlfaBeta.nodesCounter);
+        System.out.println("Reject nodes: " + AlfaBeta.rejectedNodes);
+        System.out.println(result.getBestValue() > 0 ? "You Win! :)" : "You Lost :(");
     }
 
     public boolean MakeMove(int player, List<Move> moves, IStrategy strategy){
